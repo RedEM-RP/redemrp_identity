@@ -5,28 +5,7 @@ end)
 
 RegisterNetEvent('redemrp_identity:SpawnCharacter')
 AddEventHandler('redemrp_identity:SpawnCharacter', function()
-local ped = PlayerPedId()
-			SetTimecycleModifier('Base_modifier')
-			SetEntityCoords(ped, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z) -- SPAWN COORDS
-			cam2 = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", -1921.78,105.54,338.37, 300.00,0.00,0.00, 100.00, false, 0)
-			PointCamAtCoord(cam2, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z+200) -- SPAWN COORDS
-			SetCamActiveWithInterp(cam2, cam, 900, true, true)
-			Citizen.Wait(900)
-			
-			cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z+200, 300.00,0.00,0.00, 100.00, false, 0)
-			PointCamAtCoord(cam, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z) -- SPAWN COORDS
-			SetEntityCoords(ped, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z) -- SPAWN COORDS
-			SetCamActiveWithInterp(cam, cam2, 3700, true, true)
-			Citizen.Wait(3700)
-			RenderScriptCams(false, true, 500, true, true)
-			FreezeEntityPosition(GetPlayerPed(-1), false)
-			Citizen.Wait(500)
-			SetCamActive(cam, false)
-			DestroyCam(cam, true)
-			DestroyCam(cam2, true)
-			DestroyCam(cam3, true)
-			DisplayHud(true)
-			DisplayRadar(true)
+	TriggerEvent("redemrp_respawn:respawn")
 			Citizen.Wait(2000)
             TriggerServerEvent("xrp_skin:loadSkin", function(cb)
             end)
