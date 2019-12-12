@@ -3,7 +3,7 @@
 
 ## 1. Installation
 - Be sure you have RedEM and RedEM:RP Installed
-if not -> [RedEM](https://github.com/kanersps/redem) [RedEM:RP](https://github.com/RedEM-RP/redem_roleplay)
+if not --> [RedEM](https://github.com/kanersps/redem) --> [RedEM:RP](https://github.com/RedEM-RP/redem_roleplay)
 - Clone redem_identity into [redemrp] folder
 - add ```ensure redem_identity``` after ```ensure redem_roleplay```
 - Have fun with changing camera coords ! :D
