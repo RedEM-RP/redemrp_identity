@@ -1,0 +1,126 @@
+		@font-face {
+			font-family: crock;
+			src: url(crock.ttf);
+		}
+		#main{
+			margin: 0 auto;
+			width: 60%;
+			height: 60%;
+		}
+		.char{
+			text-align:center;
+			margin-left: 2.4%;
+			margin-top: 3%;
+			float: left;
+			width: 30%;
+			height: 30%;
+			background-image: url("bg.png");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.lname, .money, .gold{
+			text-align: left;
+			margin-top: 1%;
+			margin-left: 5%;
+			font-family: "crock", crock, serif;
+			color:white;
+		}
+		.fname{
+			text-align: left;
+			margin-top: 10%;
+			margin-left: 5%;
+			font-family: "crock", crock, serif;
+			color:white;
+		}
+		.create{
+			width: 20%;
+			margin-top: 3%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #647857;
+		}
+		
+		.delete{
+			width: 20%;
+			margin-top: 3%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #785757;
+		}
+		.createnew{
+			margin: 0 auto;
+			text-align: center;
+			width: 20%;
+			margin-top: 3%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #5b6685;
+		}
+		.ctext{
+			font-family: "crock", crock, serif;
+			font-size: 30px;
+			color:white;
+			margin-top: 16%;
+		}
+		#creator{
+			position:absolute;
+			text-align:center;
+			margin-left: 38%;
+			top: 40%;
+		}
+		#name{
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+			margin: 0 auto;
+		}
+		#lastname{
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+			margin: 0 auto;
+		}
+		.create2{
+			width: 35%;
+			height: 8vh;
+			margin-top: 3%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #647857;
+		}
+		::placeholder {
+		color: black;
+		}

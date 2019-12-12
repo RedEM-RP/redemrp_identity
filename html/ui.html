@@ -1,0 +1,102 @@
+<html>
+
+<head>
+	<title> xRP - Character Selection </title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold"
+		title="roboto">
+
+	<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+</head>
+
+<body id="body">
+
+	<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+	<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+	<script src="js/jquery-func.js" type="text/javascript"></script>
+	<script src="js/listener.js" type="text/javascript"></script>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+
+
+	<div id="main">
+	</div>
+	<div id='creator'>
+		<input type='text' id='name' placeholder='Firstname...' required maxlength="12" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
+		<input type='text' id='lastname' placeholder='Lastname...' required maxlength="12" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
+		</br>
+		<button onclick="confirmNewCharacter()" class="create2">CREATE</button>
+	</div>
+	<script>
+	function validateKeyStrokes(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)) {
+        return true;
+    }
+    return false;
+}
+
+	
+		var body = document.getElementById('body');
+		var main = document.getElementById('main');
+		var creator = document.getElementById('creator');
+
+			function loadCharacters(list) {
+			creator.style.visibility = 'hidden';
+			console.log(typeof (list));
+			console.log(list.length)
+            if (list.length > 0) {
+                main.innerHTML = "";
+                var free = list.length;
+                var set = false;
+                for (var i = 0; i < list.length; i++) {
+                    char = list[i];
+                    var str = char.identifier;
+                    var chid = char.characterid;
+                    if (i != chid && !set){
+                        set = true;
+                        free = i;
+                    }
+                    main.innerHTML += '<div class="char"><div class="fname">' + char.firstname + '</div><div class="lname">' +
+                        char.lastname + '</div><div class="money">' + char.money + ' $</div><div class="gold">' + char.gold +
+                        ' G</div><button class="create" onclick="select(' + chid + ')">Play</button><button class="delete" onclick="delet(' + chid + ')">Delete</button></div></div>';
+                }
+                if (list.length < 9) {
+                    main.innerHTML += '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + free + ')">CREATE</button></div>'
+                }
+
+            } else {
+                main.innerHTML = '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + list
+                        .length + ')">CREATE</button></div>'
+            }
+        }
+
+		function createNewCharacter(id) {
+			main.style.visibility = 'hidden';
+			creator.style.visibility = 'inherit';
+			$.post('http:/redemrp_identity/createCharacter2', JSON.stringify(id));
+		}
+
+		function confirmNewCharacter() {
+			var name = document.getElementById('name').value;
+			var lastname = document.getElementById('lastname').value;
+			main.style.visibility = 'hidden';
+			creator.style.visibility = 'hidden';
+			$.post('http:/redemrp_identity/newCharacter', JSON.stringify({name: name, lname: lastname}));
+
+		}
+
+		function select(id) {
+			document.getElementById("body").style.display = "none";
+			$.post('http:/redemrp_identity/selectCharacter', JSON.stringify(id));
+		}
+		
+		function delet(id) {
+			$.post('http:/redemrp_identity/deleteCharacter', JSON.stringify(id));
+		}
+	</script>
+
+</body>
+
+</html>
