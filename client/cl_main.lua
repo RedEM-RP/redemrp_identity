@@ -94,7 +94,7 @@ RegisterNetEvent('redemrp_identity:getCharacters')
 AddEventHandler('redemrp_identity:getCharacters', function(characters)
 
 	for k,v in pairs(characters) do
-		for name,_ in pairs(v)do print(name) end
+		for name,_ in pairs(v) do print(name) end
 		v.name = v.firstname .. " " .. v.lastname
 	end
 	

@@ -1,3 +1,5 @@
+local identifierUsed = GetConvar('es_identifierUsed', 'steam')
+
 RegisterServerEvent("redemrp_identity:updateName")
 AddEventHandler("redemrp_identity:updateName", function(fname, lname)
     TriggerEvent('redemrp:getPlayerFromId', source, function(user)
@@ -11,7 +13,7 @@ AddEventHandler("redemrp_identity:getCharacters", function()
     local _source = source
     local id
     for k,v in ipairs(GetPlayerIdentifiers(_source))do
-        if string.sub(v, 1, string.len("steam:")) == "steam:" then
+        if string.sub(v, 1, string.len(identifierUsed .. ":")) == (identifierUsed .. ":") then
             id = v
             break
         end
@@ -27,7 +29,7 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
     local _source = source
     local id
     for k,v in ipairs(GetPlayerIdentifiers(_source))do
-        if string.sub(v, 1, string.len("steam:")) == "steam:" then
+        if string.sub(v, 1, string.len(identifierUsed .. ":")) == (identifierUsed .. ":") then
             id = v
             break
         end
