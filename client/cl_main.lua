@@ -79,7 +79,7 @@ end)
 
 Citizen.CreateThread(function()
 TriggerServerEvent('redemrp_identity:getCharacters')
-	--SetTimecycleModifier('Colter_Cave')
+	ShutdownLoadingScreen()
 	local ped = PlayerPedId()
 	SetEntityCoords(ped, 3791.45, 3091.3, 103.71) -- POSITION WHEN PLAYER IS CREATING/SELECTING
 	cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", Config.CameraLocation.x, Config.CameraLocation.y, Config.CameraLocation.z, 360.00,0.00,0.00, 100.00, false, 0)
