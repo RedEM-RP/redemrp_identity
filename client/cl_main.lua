@@ -8,7 +8,7 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 	if Config.UsingRespawn then
 		TriggerEvent("redemrp_respawn:respawn")
 		Citizen.Wait(2000)
-		TriggerServerEvent("xrp_skin:loadSkin", function(cb) end)
+		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 	else
 		SetEntityCoords(PlayerPedId(), Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
 
