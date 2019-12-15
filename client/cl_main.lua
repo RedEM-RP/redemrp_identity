@@ -7,8 +7,6 @@ RegisterNetEvent('redemrp_identity:SpawnCharacter')
 AddEventHandler('redemrp_identity:SpawnCharacter', function()
 	if Config.UsingRespawn then
 		TriggerEvent("redemrp_respawn:respawn", new)
-		Citizen.Wait(2000)
-		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 	else
 		SetEntityCoords(PlayerPedId(), Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
 
@@ -26,7 +24,6 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		Citizen.Wait(3700)
 		RenderScriptCams(false, true, 500, true, true)
 		FreezeEntityPosition(GetPlayerPed(-1), false)
-		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 		Citizen.Wait(500)
 		SetCamActive(cam, false)
 		DestroyCam(cam, true)
@@ -34,6 +31,9 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		DestroyCam(cam3, true)
 		DisplayHud(true)
 		DisplayRadar(true)
+		Citizen.Wait(3000)
+		TriggerServerEvent("redemrp_skin:loadSkin", function(cb)
+		end)
 
 	end
 end)
