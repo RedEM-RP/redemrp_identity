@@ -2,11 +2,11 @@ Citizen.CreateThread(function()
 Citizen.Wait(1000)
 SetNuiFocus(true, true)
 end)
-
+local new = 0
 RegisterNetEvent('redemrp_identity:SpawnCharacter')
 AddEventHandler('redemrp_identity:SpawnCharacter', function()
 	if Config.UsingRespawn then
-		TriggerEvent("redemrp_respawn:respawn")
+		TriggerEvent("redemrp_respawn:respawn", new)
 		Citizen.Wait(2000)
 		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 	else
@@ -26,6 +26,7 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		Citizen.Wait(3700)
 		RenderScriptCams(false, true, 500, true, true)
 		FreezeEntityPosition(GetPlayerPed(-1), false)
+		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 		Citizen.Wait(500)
 		SetCamActive(cam, false)
 		DestroyCam(cam, true)
@@ -65,8 +66,10 @@ RegisterNUICallback('newCharacter', function(data, cb)
 	local fname = data.name
 	local lname = data.lname
 	TriggerServerEvent('redemrp:createCharacter', fname, lname)
+	new = 1
 	TriggerEvent("redemrp_identity:SpawnCharacter")
-	TriggerEvent("redemrp_skin:openCreator")
+	new = 0
+	--TriggerEvent("redemrp_skin:openCreator")
 end)
 
 RegisterNUICallback('deleteCharacter', function(id, cb)
