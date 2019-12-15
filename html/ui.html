@@ -41,11 +41,10 @@
 		var body = document.getElementById('body');
 		var main = document.getElementById('main');
 		var creator = document.getElementById('creator');
-
+		creator.style.visibility = 'hidden';
+		
 			function loadCharacters(list) {
 			creator.style.visibility = 'hidden';
-			console.log(typeof (list));
-			console.log(list.length)
             if (list.length > 0) {
                 main.innerHTML = "";
                 var free = list.length;
