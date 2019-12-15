@@ -79,7 +79,7 @@ end)
 
 Citizen.CreateThread(function()
 ShutdownLoadingScreen()
-Wait(5000)
+Wait(3000)
 TriggerServerEvent('redemrp_identity:getCharacters')
 	local ped = PlayerPedId()
 	SetEntityCoords(ped, 3791.45, 3091.3, 103.71) -- POSITION WHEN PLAYER IS CREATING/SELECTING
