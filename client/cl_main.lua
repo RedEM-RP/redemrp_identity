@@ -7,7 +7,8 @@ RegisterNetEvent('redemrp_identity:SpawnCharacter')
 AddEventHandler('redemrp_identity:SpawnCharacter', function()
 	if Config.UsingRespawn then
 		TriggerEvent("redemrp_respawn:respawn")
-	
+		Citizen.Wait(2000)
+		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
 	else
 		SetEntityCoords(PlayerPedId(), Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
 
@@ -32,7 +33,7 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		DestroyCam(cam3, true)
 		DisplayHud(true)
 		DisplayRadar(true)
-		TriggerServerEvent("redemrp_skin:loadSkin", function(cb) end)
+
 	end
 end)
 
@@ -77,8 +78,9 @@ RegisterNUICallback('deleteCharacter', function(id, cb)
 end)
 
 Citizen.CreateThread(function()
+ShutdownLoadingScreen()
+Wait(3000)
 TriggerServerEvent('redemrp_identity:getCharacters')
-	ShutdownLoadingScreen()
 	local ped = PlayerPedId()
 	SetEntityCoords(ped, 3791.45, 3091.3, 103.71) -- POSITION WHEN PLAYER IS CREATING/SELECTING
 	cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", Config.CameraLocation.x, Config.CameraLocation.y, Config.CameraLocation.z, 360.00,0.00,0.00, 100.00, false, 0)
