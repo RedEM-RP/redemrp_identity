@@ -34,6 +34,11 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		Citizen.Wait(3000)
 		TriggerServerEvent("redemrp_skin:loadSkin", function(cb)
 		end)
+	if Config.UsingClothes then
+		Citizen.Wait(5000)
+		TriggerServerEvent("redemrp_clothing:loadClothes", function(cb)
+        end)
+	else end
 
 	end
 end)
