@@ -36,7 +36,7 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		end)
 	if Config.UsingClothes then
 		Citizen.Wait(5000)
-		TriggerServerEvent("redemrp_clothing:loadClothes", function(cb)
+		 TriggerServerEvent("redemrp_clothing:loadClothes", 1, function(cb)
         end)
 	else end
 
