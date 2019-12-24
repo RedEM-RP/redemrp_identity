@@ -1,10 +1,11 @@
 local identifierUsed = GetConvar('es_identifierUsed', 'steam')
 
 RegisterServerEvent("redemrp_identity:updateName")
-AddEventHandler("redemrp_identity:updateName", function(fname, lname)
+AddEventHandler("redemrp_identity:updateName", function(fname, lname, gender)
     TriggerEvent('redemrp:getPlayerFromId', source, function(user)
         user.setFirstname(tostring(fname))
         user.setLastname(tostring(lname))
+	user.setGender(tostring(gender))
     end)
 end)
 
