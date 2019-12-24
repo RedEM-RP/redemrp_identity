@@ -70,7 +70,8 @@ RegisterNUICallback('newCharacter', function(data, cb)
 	SetNuiFocus(false, false)
 	local fname = data.name
 	local lname = data.lname
-	TriggerServerEvent('redemrp:createCharacter', fname, lname)
+	local gender = data.gender
+	TriggerServerEvent('redemrp:createCharacter', fname, lname, gender)
 	new = 1
 	TriggerEvent("redemrp_identity:SpawnCharacter")
 	new = 0
