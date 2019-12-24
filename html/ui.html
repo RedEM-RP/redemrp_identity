@@ -22,9 +22,11 @@
 
 	<div id="main">
 	</div>
-	<div id='creator'>
+	<div id='creator' style="font-size: 1.5em">
 		<input type='text' id='name' placeholder='Firstname...' required maxlength="12" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
 		<input type='text' id='lastname' placeholder='Lastname...' required maxlength="12" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
+		<input type="radio" name="gender" id="gender" class="radio" value="M" checked> M
+		<input type="radio" name="gender" id="gender" class="radio" value="F"> F<br>
 		</br>
 		<button onclick="confirmNewCharacter()" class="create2">CREATE</button>
 	</div>
@@ -80,9 +82,10 @@
 		function confirmNewCharacter() {
 			var name = document.getElementById('name').value;
 			var lastname = document.getElementById('lastname').value;
+			var gender = $("input[name='gender']:checked").val();  
 			main.style.visibility = 'hidden';
 			creator.style.visibility = 'hidden';
-			$.post('http:/redemrp_identity/newCharacter', JSON.stringify({name: name, lname: lastname}));
+			$.post('http:/redemrp_identity/newCharacter', JSON.stringify({name: name, lname: lastname, gender: gender}));
 
 		}
 
