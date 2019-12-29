@@ -68,8 +68,11 @@ end)
 
 RegisterNUICallback('newCharacter', function(data, cb)
 	SetNuiFocus(false, false)
-	local fname = data.name
-	local lname = data.lname
+	local function tchelper(first, rest)
+		return first:upper()..rest:lower()
+	end
+	local fname = data.name:gsub("(%a)([%w_']*)", tchelper)
+	local lname = data.lname:gsub("(%a)([%w_']*)", tchelper)
 	TriggerServerEvent('redemrp:createCharacter', fname, lname)
 	new = 1
 	TriggerEvent("redemrp_identity:SpawnCharacter")
