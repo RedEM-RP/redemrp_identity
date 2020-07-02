@@ -407,7 +407,7 @@ local _ped = tonumber(data.pedid) + 1
     print("Player spawned!")
     TriggerServerEvent("redemrp:selectCharacter", charId)
 	Citizen.Wait(1000)
-	TriggerServerEvent("redemrp_identity2:TestLastPos")
+	TriggerEvent("redemrp_identity:SpawnCharacter")
 	TriggerEvent('playerSpawned')
 	TriggerServerEvent("redemrp_skin:loadSkin", function(cb)
 		end)
@@ -415,7 +415,7 @@ local _ped = tonumber(data.pedid) + 1
 	TriggerServerEvent("redemrp_inventory:LoadItems")	
     spawned = true
 	Citizen.Wait(7000)
-    -- TriggerEvent("redemrp_identity:SpawnCharacter")
+        
 		DeletePed(char1)
 		DeletePed(char2)
 		DeletePed(char3)
