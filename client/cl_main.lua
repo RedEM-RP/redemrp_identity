@@ -27,7 +27,7 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
      TriggerServerEvent("redemrp_skin:loadSkin", function(cb)
 	 end)
     if Config.UsingRespawn then
-        TriggerEvent("redemrp_respawn:respawn", new)
+      --  TriggerEvent("redemrp_respawn:respawn", new)
     else
         SetEntityCoords(PlayerPedId(), Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
         SetTimecycleModifier('Base_modifier')
