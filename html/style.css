@@ -1,73 +1,162 @@
-		@font-face {
-			font-family: crock;
-			src: url(crock.ttf);
-		}
+@font-face {
+  font-family: crock;
+  src: url(crock.ttf) format("truetype");
+}
+
+.loading {
+  height: 100%;
+  width: 100%;
+  background-image: url(circle.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50% 65%;
+  z-index: 10;
+}
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0d0d0d;
+  z-index: 1;
+}
+
+.loadingtext {
+  margin: 0;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  color: white;
+  margin-right: -50%;
+  font-family: "crock", crock, serif;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+}
+.loadingsubtext {
+  margin: 0;
+  position: absolute;
+  top: 94%;
+  left: 50%;
+  color: white;
+  margin-right: -50%;
+  font-family: "crock", crock, serif;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}
+
 		#main{
 			margin: 0 auto;
-			width: 60%;
+			width: 100%;
 			height: 60%;
+		}
+		#usuwacz{
+			position: absolute;
+			left: 38%;
+			top: 40%;
+			text-align: center;
+			margin: 0 auto;
+			width: 25%;
+			height: 15%;
+			font-size: 20px;
+			background-color: rgba(0,0,0,0.8);
+			border-radius: 10px;
+		}
+		#potwierdz{
+			margin: 0 auto;
+			text-align: center;
+			width: 30%;
+			margin-top: 6%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #b50000;
+		}
+		#anuluj{
+			margin: 0 auto;
+			text-align: center;
+			width: 30%;
+			margin-left: 2%;
+			margin-top: 3%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color: #14719c;
+		}
+		#pewien{
+			color:white;
+			font-weight: bold;
+			margin-top: 5%;
 		}
 		.char{
 			text-align:center;
-			margin-left: 2.4%;
-			margin-top: 3%;
+			margin-top: 0%;
 			float: left;
-			width: 30%;
-			height: 30%;
+			width: 25%;
+			height: 28%;
 			background-image: url("bg.png");
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: contain;
+			background-size: 100% 120%;
 		}
-		.lname, .money, .gold{
-			text-align: left;
-			margin-top: 1%;
-			margin-left: 5%;
+		.money, .gold{
+			text-align: center;
+			font-size:20px;
 			font-family: "crock", crock, serif;
 			color:white;
+			text-shadow: 0 0 5px black, 0 0 5px black;
 		}
+
 		.fname{
-			text-align: left;
-			margin-top: 10%;
-			margin-left: 5%;
+			text-align: center;
+			margin-top: 8%;
+			font-size:25px;
 			font-family: "crock", crock, serif;
 			color:white;
+			text-shadow: 0 0 5px black, 0 0 5px black;
 		}
 		.create{
 			width: 20%;
-			margin-top: 3%;
+			margin-top: 0%;
 			font-family: "crock", crock, serif;
 			font-size: 20px;
 			color:white;
 			border: 0;
 			background-color: #647857;
+			opacity:0.8;
 		}
 		
 		.delete{
 			width: 20%;
-			margin-top: 3%;
+			margin-top: -2%;
 			font-family: "crock", crock, serif;
 			font-size: 20px;
 			color:white;
 			border: 0;
 			background-color: #785757;
+			opacity:0.8;
 		}
 		.createnew{
 			margin: 0 auto;
 			text-align: center;
 			width: 20%;
-			margin-top: 3%;
 			font-family: "crock", crock, serif;
 			font-size: 20px;
 			color:white;
 			border: 0;
 			background-color: #5b6685;
+			opacity:0.8;
 		}
 		.ctext{
 			font-family: "crock", crock, serif;
 			font-size: 30px;
 			color:white;
-			margin-top: 16%;
+			margin-top: 14%;
+			text-shadow: 0 0 5px black, 0 0 5px black;
 		}
 		#creator{
 			position:absolute;
