@@ -53,11 +53,7 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
         end
     end
 
-    MySQL.Async.fetchAll('DELETE FROM characters WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
+    MySQL.Async.fetchAll('DELETE FROM characters WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)end)
     
     TriggerEvent("redemrp_identity:characterRemoved", _source, id, _charid)
 
