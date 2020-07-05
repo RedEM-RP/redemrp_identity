@@ -166,7 +166,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
         local type2
         local type3
         local type4
-        if skins[1] ~= nil then
+        if skins and skins[1] ~= nil then
             type1 = json.decode(skins[1].skin).sex
             skin1 = json.decode(skins[1].skin)
             if clothes[1] then
@@ -185,7 +185,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 loading = false,
             })
         end
-        if skins[2] ~= nil then
+        if skins and  skins[2] ~= nil then
             type2 = json.decode(skins[2].skin).sex
             skin2 = json.decode(skins[2].skin)
             if clothes[2] then
@@ -200,7 +200,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 clothes2 = elementy
             end
         end
-        if skins[3] ~= nil then
+        if skins and  skins[3] ~= nil then
             type3 = json.decode(skins[3].skin).sex
             skin3 = json.decode(skins[3].skin)
             if clothes[3] then
@@ -215,7 +215,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 clothes3 = elementy
             end
         end
-        if skins[4] ~= nil then
+        if skins and  skins[4] ~= nil then
             type4 = json.decode(skins[4].skin).sex
             skin4 = json.decode(skins[4].skin)
             if clothes[4] then

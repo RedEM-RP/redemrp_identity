@@ -25,13 +25,23 @@ AddEventHandler("redemrp_identity:getCharacters", function()
     end
 
     MySQL.Async.fetchAll('SELECT * FROM characters WHERE `identifier`=@identifier;', {identifier = id}, function(result)
-        MySQL.Async.fetchAll('SELECT * FROM skins WHERE `identifier`=@identifier;', {identifier = id}, function(result2)
-            MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier;', {identifier = id}, function(result3)
-                TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, result3)
-
-
+        if(found.redemrp_skin)then
+        if(foundResources.redemrp_skin)then
+            MySQL.Async.fetchAll('SELECT * FROM skins WHERE `identifier`=@identifier;', {identifier = id}, function(result2)
+                MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier;', {identifier = id}, function(result3)
+                    TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, result3)
+                end)
+                if(foundResources.redemrp_clothing)then
+                    MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier;', {identifier = id}, function(result3)
+                        TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, result3)
+                    end)
+                else
+                    TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, {})
+                end
             end)
-        end)
+        else
+            TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, {}, {})
+        end
     end)
 
 
@@ -120,10 +130,18 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
             end)
         end
     end)
-    Wait(1000)
+    
     MySQL.Async.fetchAll('DELETE FROM gang WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)
         if result then
         else
+
+        if user then
+            Wait(1000)
+            MySQL.Async.fetchAll('DELETE FROM gang WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)
+                if result then
+                else
+                end
+            end)
         end
     end)
 
