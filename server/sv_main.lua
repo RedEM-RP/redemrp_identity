@@ -25,12 +25,8 @@ AddEventHandler("redemrp_identity:getCharacters", function()
     end
 
     MySQL.Async.fetchAll('SELECT * FROM characters WHERE `identifier`=@identifier;', {identifier = id}, function(result)
-        if(found.redemrp_skin)then
         if(foundResources.redemrp_skin)then
             MySQL.Async.fetchAll('SELECT * FROM skins WHERE `identifier`=@identifier;', {identifier = id}, function(result2)
-                MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier;', {identifier = id}, function(result3)
-                    TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, result3)
-                end)
                 if(foundResources.redemrp_clothing)then
                     MySQL.Async.fetchAll('SELECT * FROM clothes WHERE `identifier`=@identifier;', {identifier = id}, function(result3)
                         TriggerClientEvent('redemrp_identity:openSelectionMenu', _source, result, result2, result3)
