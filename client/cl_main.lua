@@ -29,26 +29,11 @@ AddEventHandler('redemrp_identity:SpawnCharacter', function()
 		TriggerEvent("redemrp_respawn:respawn", new)
 	  end
     else
-        SetEntityCoords(PlayerPedId(), Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
         SetTimecycleModifier('Base_modifier')
-        SetEntityCoords(ped, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
-        cam2 = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", Config.CameraLocation.x, Config.CameraLocation.y, Config.CameraLocation.z, 300.00, 0.00, 0.00, 100.00, false, 0)
-        PointCamAtCoord(cam2, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z+200)
-        SetCamActiveWithInterp(cam2, cam, 900, true, true)
-        Citizen.Wait(900)
-
-        cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z+200, 300.00, 0.00, 0.00, 100.00, false, 0)
-        PointCamAtCoord(cam, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
-        SetEntityCoords(ped, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
-        SetCamActiveWithInterp(cam, cam2, 3700, true, true)
+        --SetEntityCoords(ped, Config.SpawnPoint.x, Config.SpawnPoint.y, Config.SpawnPoint.z)
         Citizen.Wait(3700)
-        RenderScriptCams(false, true, 500, true, true)
         FreezeEntityPosition(PlayerPedId(), false)
         Citizen.Wait(500)
-        SetCamActive(cam, false)
-        DestroyCam(cam, true)
-        DestroyCam(cam2, true)
-        DestroyCam(cam3, true)
         DisplayHud(true)
         DisplayRadar(true)
         Citizen.Wait(3000)
@@ -166,7 +151,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
         local type2
         local type3
         local type4
-        if skins[1] ~= nil then
+        if skins and skins[1] ~= nil then
             type1 = json.decode(skins[1].skin).sex
             skin1 = json.decode(skins[1].skin)
             if clothes[1] then
@@ -185,7 +170,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 loading = false,
             })
         end
-        if skins[2] ~= nil then
+        if skins and skins[2] ~= nil then
             type2 = json.decode(skins[2].skin).sex
             skin2 = json.decode(skins[2].skin)
             if clothes[2] then
@@ -200,7 +185,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 clothes2 = elementy
             end
         end
-        if skins[3] ~= nil then
+        if skins and skins[3] ~= nil then
             type3 = json.decode(skins[3].skin).sex
             skin3 = json.decode(skins[3].skin)
             if clothes[3] then
@@ -215,7 +200,7 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 clothes3 = elementy
             end
         end
-        if skins[4] ~= nil then
+        if skins and skins[4] ~= nil then
             type4 = json.decode(skins[4].skin).sex
             skin4 = json.decode(skins[4].skin)
             if clothes[4] then
