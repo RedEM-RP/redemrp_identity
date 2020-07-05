@@ -129,11 +129,6 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
                 end
             end)
         end
-    end)
-    
-    MySQL.Async.fetchAll('DELETE FROM gang WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)
-        if result then
-        else
 
         if user then
             Wait(1000)
