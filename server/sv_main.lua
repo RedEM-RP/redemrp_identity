@@ -1,5 +1,18 @@
 local identifierUsed = GetConvar('es_identifierUsed', 'steam')
 
+local foundResources = {}
+local neededResources = {"redemrp_skin"}
+
+local detectNeededResources = function()
+    for k,v in ipairs(neededResources)do
+        if GetResourceMetadata(v, "fx_version", 0) then
+            foundResources[v] = true
+        end
+    end
+end
+
+detectNeededResources()
+
 RegisterServerEvent("redemrp_identity:getCharacters")
 AddEventHandler("redemrp_identity:getCharacters", function()
     local _source = source
