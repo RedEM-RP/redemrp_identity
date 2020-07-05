@@ -58,59 +58,8 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
         else
         end
     end)
-    MySQL.Async.fetchAll('DELETE FROM horses WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-    MySQL.Async.fetchAll('DELETE FROM player_animals WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-    MySQL.Async.fetchAll('DELETE FROM status WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-
-    MySQL.Async.fetchAll('DELETE FROM coaches WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-
-    MySQL.Async.fetchAll('DELETE FROM horse_components WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-    MySQL.Async.fetchAll('DELETE FROM mail_cases WHERE `owner` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-    MySQL.Async.fetchAll('DELETE FROM notebook WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-    MySQL.Async.fetchAll('DELETE FROM player_animals WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
-
-    MySQL.Async.fetchAll('DELETE FROM user_locker WHERE `identifier` = @identifier AND `charid`=@charid;', {identifier = id, charid=_charid}, function(result)
-        if result then
-        else
-        end
-    end)
+    
+    TriggerEvent("redemrp_identity:characterRemoved", _source, id, _charid)
 
     TriggerEvent('redemrp_db:getCurrentGang', id, _charid, function(user)
         if user ~= false  and tonumber(user.ganggrade) >= 10 then
