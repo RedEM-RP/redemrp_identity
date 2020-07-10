@@ -247,19 +247,20 @@ local _clothes4 = clothes4
 
 
 	if type1 == 1 then
-		char1 = CreatePed( GetHashKey("mp_male"), charcoords[1].x, charcoords[1].y, charcoords[1].z, 200.0, false, false, 0, 0)
+		char1 = CreatePed( GetHashKey("mp_male"), charcoords[1].x, charcoords[1].y, charcoords[1].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char1) do
 			Wait(100)
 		end
 	end
 	if type1 == 2 then
-		char1 = CreatePed(GetHashKey("mp_female"), charcoords[1].x, charcoords[1].y, charcoords[1].z, 200.0, false, false, 0, 0)
+		char1 = CreatePed(GetHashKey("mp_female"), charcoords[1].x, charcoords[1].y, charcoords[1].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char1) do
 			Wait(100)
 		end
 	end
 
 	if char1 ~= nil then
+	NetworkSetEntityInvisibleToNetwork(char1,true)
 	SetEntityAsMissionEntity(char1, true, true)
     Citizen.InvokeNative(0x283978A15512B2FE, char1, true)
     SetEntityInvincible(char1, true)
@@ -271,16 +272,15 @@ local _clothes4 = clothes4
 	
 	
 	
-	
 	-- CHAR2
 	if type2 == 1 then
-		char2 = CreatePed( GetHashKey("mp_male"), charcoords[2].x, charcoords[2].y, charcoords[2].z, 200.0, false, false, 0, 0)
+		char2 = CreatePed( GetHashKey("mp_male"), charcoords[2].x, charcoords[2].y, charcoords[2].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char2) do
 			Wait(100)
 		end
 	end
 	if type2 == 2 then
-		char2 = CreatePed(GetHashKey("mp_female"), charcoords[2].x, charcoords[2].y, charcoords[2].z, 200.0, false, false, 0, 0)
+		char2 = CreatePed(GetHashKey("mp_female"), charcoords[2].x, charcoords[2].y, charcoords[2].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char2) do
 			Wait(100)
 		end
@@ -288,8 +288,10 @@ local _clothes4 = clothes4
 
 
 	if char2 ~= nil then
-	 SetEntityAsMissionEntity(char2, true, true)
+	NetworkSetEntityInvisibleToNetwork(char2,true)
+	SetEntityAsMissionEntity(char2, true, true)
     Citizen.InvokeNative(0x283978A15512B2FE, char2, true)
+	SetEntityInvincible(char2, true)
     SetEntityCanBeDamagedByRelationshipGroup(char2, false, `PLAYER`)
 		print(type1)
 		Wait(250)
@@ -301,18 +303,19 @@ local _clothes4 = clothes4
 	
 	-- CHAR3
 	if type3 == 1 then
-		char3 = CreatePed( GetHashKey("mp_male"), charcoords[3].x, charcoords[3].y, charcoords[3].z, 200.0, false, false, 0, 0)
+		char3 = CreatePed( GetHashKey("mp_male"), charcoords[3].x, charcoords[3].y, charcoords[3].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char3) do
 			Wait(100)
 		end
 	end
 	if type3 == 2 then
-		char3 = CreatePed(GetHashKey("mp_female"), charcoords[3].x, charcoords[3].y, charcoords[3].z, 200.0, false, false, 0, 0)
+		char3 = CreatePed(GetHashKey("mp_female"), charcoords[3].x, charcoords[3].y, charcoords[3].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char3) do
 			Wait(100)
 		end
 	end
 	if char3 ~= nil then
+	NetworkSetEntityInvisibleToNetwork(char3,true)
 	SetEntityAsMissionEntity(char3, true, true)
     Citizen.InvokeNative(0x283978A15512B2FE, char3, true)
     SetEntityInvincible(char3, true)
@@ -325,19 +328,20 @@ local _clothes4 = clothes4
    
 	-- CHAR4
 	if type4 == 1 then
-		char4 = CreatePed( GetHashKey("mp_male"), charcoords[4].x, charcoords[4].y, charcoords[4].z, 200.0, false, false, 0, 0)
+		char4 = CreatePed( GetHashKey("mp_male"), charcoords[4].x, charcoords[4].y, charcoords[4].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char4) do
 			Wait(100)
 		end
 	end
 	if type4 == 2 then
-		char4 = CreatePed(GetHashKey("mp_female"), charcoords[4].x, charcoords[4].y, charcoords[4].z, 200.0, false, false, 0, 0)
+		char4 = CreatePed(GetHashKey("mp_female"), charcoords[4].x, charcoords[4].y, charcoords[4].z, 200.0, true, true, 0, 0)
 		while not DoesEntityExist(char4) do
 			Wait(100)
 		end
 	end
 
 	if char4 ~= nil then
+	NetworkSetEntityInvisibleToNetwork(char4,true)
 	SetEntityAsMissionEntity(char4, true, true)
     Citizen.InvokeNative(0x283978A15512B2FE, char4, true)
     SetEntityInvincible(char4, true)
