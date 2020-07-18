@@ -1,7 +1,7 @@
 local identifierUsed = GetConvar('es_identifierUsed', 'steam')
 
 local foundResources = {}
-local neededResources = {"redemrp_skin"}
+local neededResources = {"redemrp_skin", "redemrp_clothing"}
 
 local detectNeededResources = function()
     for k,v in ipairs(neededResources)do
