@@ -215,7 +215,9 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
                 clothes4 = elementy
             end
         end
-
+                if skins == nil or clothes == nil then
+			TriggerEvent('redemrp_identity2:removeLoadingScreen')
+		end
         createCharacters(type1,type2,type3,type4,skin1,skin2,skin3,skin4 , clothes1 ,clothes2 ,clothes3 ,clothes4)
 
     end)
