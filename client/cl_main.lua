@@ -96,7 +96,7 @@ TaskGoToCoordAnyMeans(char4 ,3.90, 1017.05, 205.4088 ,1.0, 0, 0, 0, 0.5)
 end
 end)
 
-           local elementy = {
+                    local elementy = {
                         ["hat"] = 1,
                         ["shirt"] = 1,
                         ["vest"] = 1,
@@ -105,21 +105,22 @@ end)
                         ["boots"] =1,
                         ["skirt"] = 1,
                         ["coat"] = 1,
-                        ["rekawiczki"] = 1,
-                        ["bandana"] = 1,					
-						["gunbelts"] =1,
+                        ["gloves"] = 1,
+                        ["bandana"] = 1,
+                        ["gunbelts"] =1,
                         ["belts"] = 1,
                         ["beltbuckle"] = 1,
                         ["offhand"] = 1,
                         ["neckties"] = 1,
-						["suspenders"] = 1,
+                        ["suspenders"] = 1,
                         ["spurs"] = 1,
-						["poncho"] = 1,
+                        ["poncho"] = 1,
                         ["eyewear"] = 1,
 
 
 
                     }
+
 RegisterNetEvent('redemrp_identity:openSelectionMenu')
 AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,clothes)
     Citizen.CreateThread(function()
