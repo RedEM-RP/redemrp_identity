@@ -5,10 +5,14 @@ local neededResources = {"redemrp_skin", "redemrp_clothing"}
 
 local detectNeededResources = function()
     for k,v in ipairs(neededResources)do
-        if GetResourceMetadata(v, "fx_version", 0) then
+        if GetResourceState(v) == "started" then
             foundResources[v] = true
-        end
+			print("^4[redemrp_identity] ^2["..v.."] ^0 Found ^0")
+        else
+			print("^4[redemrp_identity] ^1["..v.."] ^0Not Found, missing features ^0")
+		end
     end
+	print("^4[redemrp_identity] ^0 Loaded ^0")
 end
 
 detectNeededResources()
@@ -57,28 +61,6 @@ AddEventHandler("redemrp_identity:deleteCharacter", function(_charid, Callback)
     
     TriggerEvent("redemrp_identity:characterRemoved", _source, id, _charid)
 
-    TriggerEvent('redemrp_db:getCurrentGang', id, _charid, function(user)
-        if user ~= false  and tonumber(user.ganggrade) >= 10 then
-            MySQL.Async.fetchAll('DELETE FROM gang WHERE `gang` = @gang;', {gang = user.gang}, function(result)
-                if result then
-                else
-                end
-            end)
-            MySQL.Async.fetchAll('DELETE FROM gang_locations WHERE `gang` = @gang;', {gang = user.gang}, function(result)
-                if result then
-                else
-                end
-            end)
-        end
 
-        if user then
-            Wait(1000)
-            MySQL.Async.fetchAll('DELETE FROM gang WHERE `identifier` = @identifier AND `characterid`=@characterid;', {identifier = id, characterid=_charid}, function(result)
-                if result then
-                else
-                end
-            end)
-        end
-    end)
 
 end)

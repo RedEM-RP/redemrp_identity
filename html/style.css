@@ -52,7 +52,7 @@
 			width: 100%;
 			height: 60%;
 		}
-		#usuwacz{
+		#remover{
 			position: absolute;
 			left: 38%;
 			top: 40%;
@@ -64,7 +64,7 @@
 			background-color: rgba(0,0,0,0.8);
 			border-radius: 10px;
 		}
-		#potwierdz{
+		#confirm{
 			margin: 0 auto;
 			text-align: center;
 			width: 30%;
@@ -75,7 +75,7 @@
 			border: 0;
 			background-color: #b50000;
 		}
-		#anuluj{
+		#cancelDeletion{
 			margin: 0 auto;
 			text-align: center;
 			width: 30%;
