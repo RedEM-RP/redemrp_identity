@@ -87,23 +87,10 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
         RenderScriptCams(true, false, 1, true, true)
         DisplayHud(false)
         DisplayRadar(false)
-        for i=1,4 do
-
-            if skins and skins[i] ~= nil then
-                PlayerSex[i] = json.decode(skins[i].skin).sex
-                PlayerSkins[i] = json.decode(skins[i].skin)
-                if clothes[i] then
-                    for k,v in ipairs(clothes)do
-                        if skins[i].charid == v.charid then
-                            PlayerClothes[i] = json.decode(clothes[k].clothes)
-                            break
-                        end
-                    end
-                else
-                    PlayerClothes[i] = {}
-                end
-            end
-
+        for k, v in ipairs(characters) do
+            PlayerSkins[k] = FindCharacterSkin(skins, v.characterid)
+            PlayerSex[k] = PlayerSkins[k].sex
+            PlayerClothes[k] = FindCharacterClothes(clothes, v.characterid)
         end
 		if next(PlayerSkins) then
 			if not next(PlayerSkins[1]) then
@@ -116,6 +103,25 @@ AddEventHandler('redemrp_identity:openSelectionMenu', function(characters,skins,
     end)
 end)
 
+function FindCharacterClothes(clothes, charid)
+    for k, v in ipairs(clothes) do
+        if v.charid == charid then
+            print("Identity Clothes Found")
+            return json.decode(v.clothes)
+        end
+    end
+    return {}
+end
+
+function FindCharacterSkin(skins, charid)
+    for k, v in ipairs(skins) do
+        if v.charid == charid then
+            print("Identity SKIN Found")
+            return json.decode(v.skin)
+        end
+    end
+    return {}
+end
 
 function createCharacters()
     local maleHash = GetHashKey("mp_male")
