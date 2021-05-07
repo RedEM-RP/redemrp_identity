@@ -115,6 +115,7 @@
 		}
 
 		function confirm(id) {
+			r.innerHTML = "";			
 			r.style.display = "block";
 			r.innerHTML += "<div id='pewien'>Are you sure? This action cannot be undone!</div></br>";
 			r.innerHTML += "<button id='confirm' onclick='delet(" + id + ")'>Confirm</buton>";
