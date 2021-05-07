@@ -19,110 +19,113 @@
 	<script src="js/listener.js" type="text/javascript"></script>
 	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
 
-<div class="bg" id="loading">
-	<div  class="loading">
-	<div class="loadingtext">LOADING YOUR CHARACTERS ...</div>
-	<div class="loadingsubtext">Loading time and correctness depend on your pc.</div>
+	<div class="bg" id="loading">
+		<div class="loading">
+			<div class="loadingtext">LOADING YOUR CHARACTERS ...</div>
+			<div class="loadingsubtext">Loading time and correctness depend on your pc.</div>
+		</div>
 	</div>
-	</div>
-	
+
 	<div id="remover">
 	</div>
 	<div id="main">
 	</div>
 	<div id='creator'>
-		<input type='text' id='name' placeholder='Imię...' required maxlength="12" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
-		<input type='text' id='lastname' placeholder='Naziwsko...' required maxlength="16" pattern="[A-Za-z]" onkeypress="return validateKeyStrokes(event)">
+		<input type='text' id='name' placeholder='Imię...' required maxlength="12" pattern="[A-Za-z]"
+			onkeypress="return validateKeyStrokes(event)">
+		<input type='text' id='lastname' placeholder='Naziwsko...' required maxlength="16" pattern="[A-Za-z]"
+			onkeypress="return validateKeyStrokes(event)">
 		</br>
 		<button onclick="confirmNewCharacter()" class="create2">Create</button>
 	</div>
 	<script>
-	$("#main").fadeOut();
-	$("#creator").fadeOut();
-      window.addEventListener("message", function (event) {
-        if (event.data.loading == false) {
-         	$("#loading").fadeOut();
-			setTimeout(function(){
-			$("#main").fadeIn();
-			$("#creator").fadeIn();
-			}, 5000);
-		}
-		 if (event.data.list != null) {
-         	loadCharacters(event.data.list)
-		}
-		  if (event.data.loading == true) {
-         	$("#loading").fadeIn();
-		}
+		$("#main").fadeOut();
+		$("#creator").fadeOut();
+		window.addEventListener("message", function (event) {
+			if (event.data.loading == false) {
+				$("#loading").fadeOut();
+				setTimeout(function () {
+					$("#main").fadeIn();
+					$("#creator").fadeIn();
+				}, 5000);
+			}
+			if (event.data.list != null) {
+				loadCharacters(event.data.list)
+			}
+			if (event.data.loading == true) {
+				$("#loading").fadeIn();
+			}
 		});
-		
-		
+
+
 		var body = document.getElementById('body');
 		var main = document.getElementById('main');
 		var creator = document.getElementById('creator');
 		var r = document.getElementById("remover");
 		r.style.display = "none";
 		creator.style.visibility = 'hidden';
-		
-			function loadCharacters(list) {
+
+		function loadCharacters(list) {
 			creator.style.visibility = 'hidden';
-            if (list.length > 0) {
-                main.innerHTML = "";
-                var free = list.length;
-                var set = false;
-                for (var i = 0; i < list.length; i++) {
-                    char = list[i];
-                    var str = char.identifier;
-                    var chid = char.characterid;
-                    if (i != chid && !set){
-                        set = true;
-                        free = i;
-                    }
-                    main.innerHTML += '<div class="char"><div class="fname">' + char.firstname +" 		 "+ char.lastname +'</div><div class="money">' + char.money + "$ | " + char.gold +' G</div><button class="create" onclick="select(' + chid + ','+ i +')">SELECT</button><button class="delete" onclick="confirm(' + chid + ')">Delete</button></div></div>';
+			if (list.length > 0) {
+				main.innerHTML = "";
+				var free = list.length;
+				var set = false;
+				for (var i = 0; i < list.length; i++) {
+					char = list[i];
+					var str = char.identifier;
+					var chid = char.characterid;
+					if (i != chid && !set) {
+						set = true;
+						free = i;
+					}
+					main.innerHTML += '<div class="char"><div class="fname">' + char.firstname + " 		 " + char.lastname + '</div><div class="money">' + char.money + "$ | " + char.gold + ' G</div><button class="create" onclick="select(' + chid + ',' + i + ')">SELECT</button><button class="delete" onclick="confirm(' + chid + ')">Delete</button></div></div>';
 
 
-                }
-                if (list.length < 4) {
-                    main.innerHTML += '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + free + ')">Create</button></div>'
-                }
+				}
+				if (list.length < 4) {
+					main.innerHTML += '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + free + ')">Create</button></div>'
+				}
 
-            } else {
-                main.innerHTML = '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + list
-                        .length + ')">Create</button></div>'
-            }
-        }
+			} else {
+				main.innerHTML = '<div class="char"><div class="ctext">Create new character</div> <button class="createnew" onclick="createNewCharacter(' + list
+					.length + ')">Create</button></div>'
+			}
+		}
 
 		function createNewCharacter(id) {
-			main.style.visibility = 'hidden';
-			creator.style.visibility = 'inherit';
+			$("#main").fadeOut();
+			$("#creator").fadeIn();
 			$.post('http:/redemrp_identity/createCharacter2', JSON.stringify(id));
 		}
 
 		function confirmNewCharacter() {
 			var name = document.getElementById('name').value;
 			var lastname = document.getElementById('lastname').value;
-			main.style.visibility = 'hidden';
-			creator.style.visibility = 'hidden';
-			$.post('http:/redemrp_identity/newCharacter', JSON.stringify({name: name, lname: lastname}));
+			$("#main").fadeOut();
+			$("#creator").fadeOut();
+			$.post('http:/redemrp_identity/newCharacter', JSON.stringify({ name: name, lname: lastname }));
 
 		}
 
-		function select(id ,pedid) {
-			document.getElementById("body").style.display = "none";
-			$.post('http:/redemrp_identity/selectCharacter', JSON.stringify({id:id, pedid:pedid}));
+		function select(id, pedid) {
+			$("#main").fadeOut();
+			$("#creator").fadeOut();
+			$.post('http:/redemrp_identity/selectCharacter', JSON.stringify({ id: id, pedid: pedid }));
 		}
-		
+
 		function confirm(id) {
 			r.style.display = "block";
 			r.innerHTML += "<div id='pewien'>Are you sure? This action cannot be undone!</div></br>";
 			r.innerHTML += "<button id='confirm' onclick='delet(" + id + ")'>Confirm</buton>";
 			r.innerHTML += "<button id='cancelDeletion' onclick='cancelDeletion()'>Cancel</button>";
 		}
-		
+
 		function cancelDeletion() {
 			r.innerHTML = "";
 			r.style.display = "none";
 		}
-		
+
 		function delet(id) {
 			r.innerHTML = "";
 			r.style.display = "none";
