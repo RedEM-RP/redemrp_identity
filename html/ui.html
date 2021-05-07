@@ -46,7 +46,8 @@
 				$("#loading").fadeOut();
 				setTimeout(function () {
 					$("#main").fadeIn();
-					$("#creator").fadeIn();
+					//$("#creator").fadeIn();
+					$("#creator").fadeOut();
 				}, 5000);
 			}
 			if (event.data.list != null) {
@@ -63,10 +64,12 @@
 		var creator = document.getElementById('creator');
 		var r = document.getElementById("remover");
 		r.style.display = "none";
-		creator.style.visibility = 'hidden';
+		//creator.style.visibility = 'hidden';
+		$("#creator").fadeOut();
 
 		function loadCharacters(list) {
-			creator.style.visibility = 'hidden';
+			//creator.style.visibility = 'hidden';
+			$("#creator").fadeOut();
 			if (list.length > 0) {
 				main.innerHTML = "";
 				var free = list.length;
@@ -96,7 +99,7 @@
 		function createNewCharacter(id) {
 			$("#main").fadeOut();
 			$("#creator").fadeIn();
-			$.post('http:/redemrp_identity/createCharacter2', JSON.stringify(id));
+			//$.post('http:/redemrp_identity/createCharacter2', JSON.stringify(id));
 		}
 
 		function confirmNewCharacter() {
